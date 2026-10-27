@@ -25,14 +25,17 @@ jobs:
           channel: 'stable'
           cache: true
 
-      - name: Install dependencies
-        run: flutter pub get
-
-      - name: Build APK for Pixel 10
-        run: flutter build apk --release --target-platform android-arm64
+      - name: Locate Project, Install & Build APK
+        run: |
+          # البحث التلقائي عن مسار مجلد التطبيق
+          PROJECT_DIR=$(dirname $(find . -name "pubspec.yaml" | head -n 1))
+          echo "تم العثور على المشروع في المسار: $PROJECT_DIR"
+          cd "$PROJECT_DIR"
+          flutter pub get
+          flutter build apk --release --target-platform android-arm64
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: KD-Catalog-Pixel10-APK
-          path: build/app/outputs/flutter-apk/app-release.apk
+          path: "**/build/app/outputs/flutter-apk/app-release.apk"
