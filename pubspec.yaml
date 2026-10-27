@@ -1,1 +1,21 @@
+name: kd_catalog_builder
+description: KitchenDraw Catalog Builder
+publish_to: 'none'
+version: 1.0.0+1
 
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  provider: ^6.1.1
+  shared_preferences: ^2.2.2
+  path_provider: ^2.1.2
+  share_plus: ^7.2.2
+  uuid: ^4.3.3
+
+flutter:
+  uses-material-design: true
